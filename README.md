@@ -1,5 +1,6 @@
 # 📩 Spam Detector with NLP  
 An **end-to-end Natural Language Processing (NLP)** project that classifies text messages as **Spam** or **Not Spam** using multiple feature extraction techniques and ML models.  
+
 [🔗 **Live Streamlit App**](https://spam-detector-with-nlp.streamlit.app/)  
 
 ---
@@ -91,7 +92,7 @@ The **interactive web app** was built with **Streamlit** to allow users to test 
 
 The entire model pipeline (preprocessing tools + trained MLP model + scaler) was saved and loaded seamlessly in the Streamlit app.
 
-[🔗 **Try the App Here**](PUT-YOUR-STREAMLIT-LINK-HERE)
+[🔗 **Try the App Here**](https://spam-detector-with-nlp.streamlit.app/)
 
 ---
 
