@@ -7,8 +7,6 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import numpy as np
-import subprocess
-import sys
 
 # ------------------------
 # Page config
@@ -18,7 +16,6 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide"
 )
-
 st.title("📩 Spam Detector")
 st.subheader("Enter any message and find out if it's 📨 Spam or 📫 Not Spam!")
 
@@ -32,13 +29,9 @@ stop_words = saved_objects["stop_words"]
 lemmatizer = saved_objects["lemmatizer"]
 
 # ------------------------
-# Load spaCy model safely (auto-download if missing)
+# Load spaCy model here (do NOT load from joblib)
 # ------------------------
-try:
-    nlp = spacy.load("en_core_web_md")
-except OSError:
-    subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_md"])
-    nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("en_core_web_md")
 
 # ------------------------
 # Download NLTK packages if not present
@@ -103,7 +96,7 @@ if st.button("Predict 🚀"):
         if spam_prob >= 60:
             st.markdown(
                 styled_box(
-                    f"🛑 Prediction: **Spam**<br>"
+                    f"🛑 Prediction: Spam<br>"
                     f"Confidence in Spam: {spam_prob:.2f}%",
                     "#e74c3c", "🛑"
                 ),
@@ -112,7 +105,7 @@ if st.button("Predict 🚀"):
         elif notspam_prob >= 60:
             st.markdown(
                 styled_box(
-                    f"✅ Prediction: **Not Spam**<br>"
+                    f"✅ Prediction: Not Spam<br>"
                     f"Confidence in Not Spam: {notspam_prob:.2f}%",
                     "#27ae60", "✅"
                 ),
@@ -122,7 +115,7 @@ if st.button("Predict 🚀"):
             if spam_prob >= notspam_prob:
                 st.markdown(
                     styled_box(
-                        f"🤔 Prediction: **Uncertain (leans Spam)**<br>"
+                        f"🤔 Prediction: Uncertain (leans Spam)<br>"
                         f"Confidence in Spam: {spam_prob:.2f}%",
                         "#f39c12", "🤔"
                     ),
@@ -131,7 +124,7 @@ if st.button("Predict 🚀"):
             else:
                 st.markdown(
                     styled_box(
-                        f"🤔 Prediction: **Uncertain (leans Not Spam)**<br>"
+                        f"🤔 Prediction: Uncertain (leans Not Spam)<br>"
                         f"Confidence in Not Spam: {notspam_prob:.2f}%",
                         "#f39c12", "🤔"
                     ),
