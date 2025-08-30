@@ -1,6 +1,6 @@
 # 📩 Spam Detector with NLP  
 An **end-to-end Natural Language Processing (NLP)** project that classifies text messages as **Spam** or **Not Spam** using multiple feature extraction techniques and ML models.  
-[🔗 **Live Streamlit App**](PUT-YOUR-STREAMLIT-LINK-HERE)  
+[🔗 **Live Streamlit App**](https://spam-detector-with-nlp.streamlit.app/)  
 
 ---
 
@@ -17,7 +17,7 @@ It combines **data cleaning**, **text preprocessing**, **NLP techniques** (POS t
 
 ---
 
-## **3. Text Preprocessing 🔤**
+## **3. NLP Preprocessing 🔤**
 - **Lowercasing** all text to ensure uniformity.  
 - **Removing punctuation** to focus on words only.  
 - **Tokenizing** messages into individual words.  
@@ -28,7 +28,7 @@ This created a **clean_text column** ready for NLP processing.
 
 ---
 
-## **4. NLP Exploratory Analysis 🧠**
+## **4. NLP Feature Extraction & Analysis 🧠**
 
 ### **Part-of-Speech (POS) Tagging**
 - Used NLP to identify the grammatical role of each word (nouns, verbs, adjectives, etc.).  
@@ -42,7 +42,7 @@ This created a **clean_text column** ready for NLP processing.
 - Generated a WordCloud to highlight the most frequent words visually.  
 - Larger words indicate higher frequency.  
 
-![WordCloud](PUT-YOUR-WORDCLOUD-IMAGE-LINK-HERE)
+![WordCloud](word-cloud.jpg)
 
 This step gave quick insights into common spam keywords.
 
