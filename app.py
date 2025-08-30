@@ -1,4 +1,11 @@
 # spam_detector_app.py
+
+import nltk
+
+# Force download in case resources not found
+nltk.download("punkt")
+nltk.download("punkt_tab")
+
 import streamlit as st
 import joblib
 import spacy
