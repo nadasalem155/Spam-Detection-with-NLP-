@@ -8,3 +8,5 @@ streamlit==1.36.0
 matplotlib==3.10.3
 seaborn==0.13.2
 joblib==1.5.1
+spacy
+en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.7/en_core_web_md-3.8.7.tar.gz
