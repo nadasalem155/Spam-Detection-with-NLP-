@@ -92,8 +92,6 @@ The **interactive web app** was built with **Streamlit** to allow users to test 
 
 The entire model pipeline (preprocessing tools + trained MLP model + scaler) was saved and loaded seamlessly in the Streamlit app.
 
-[🔗 **Try the App Here**](https://spam-detector-with-nlp.streamlit.app/)
-
 ---
 
 ## **8. Key Takeaways ✨**
