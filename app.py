@@ -1,9 +1,15 @@
 # spam_detection_app.py
 
+import nltk
+
+nltk.download("punkt")
+nltk.download("punkt_tab")
+
 import streamlit as st
 import joblib
 import re
-import nltk
+
+import string
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
@@ -11,13 +17,12 @@ from nltk.stem import WordNetLemmatizer
 # Page config
 # ------------------------
 st.set_page_config(page_title="📩 Spam Detection", page_icon="🤖", layout="wide")
-st.title("📩 Spam Detection")
+st.title("📩 Spam Detection ")
 st.subheader("Enter any message and find out if it's 📨 Spam or 📫 Not Spam!")
 
 # ------------------------
 # Download NLTK data
 # ------------------------
-nltk.download("punkt_tab")
 nltk.download("punkt")
 nltk.download("stopwords")
 nltk.download("wordnet")
@@ -75,28 +80,14 @@ def styled_box(message, color, icon):
     """
 
 # ------------------------
-# Session state for text area
+# Input text
 # ------------------------
-if "current_text" not in st.session_state:
-    st.session_state.current_text = ""
+user_input = st.text_area("✍ Enter your message here:")
 
-user_input = st.text_area(
-    "✍ Enter your message here:",
-    value=st.session_state.current_text,
-    height=150
-)
-
-# ------------------------
-# Prediction button
-# ------------------------
 if st.button("Predict 🚀"):
     if user_input.strip() == "":
         st.warning("⚠ Please enter a message to predict.")
     else:
-        # حفظ النص الحالي في session_state
-        st.session_state.current_text = user_input
-
-        # Preprocess and predict
         clean_text = preprocess_text(user_input)
         X_vec = tfidf.transform([clean_text]).toarray()
         X_scaled = scaler.transform(X_vec)
