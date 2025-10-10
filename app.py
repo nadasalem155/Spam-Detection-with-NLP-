@@ -76,11 +76,18 @@ def styled_box(message, color, icon):
     """
 
 # ------------------------
+# Session state for text area
+# ------------------------
+if "user_input" not in st.session_state:
+    st.session_state.user_input = ""
+
+# ------------------------
 # Input text
 # ------------------------
-user_input = st.text_area("✍ Enter your message here:")
+user_input = st.text_area("✍ Enter your message here:", value=st.session_state.user_input)
 
 if st.button("Predict 🚀"):
+    st.session_state.user_input = user_input  # حفظ النص
     if user_input.strip() == "":
         st.warning("⚠ Please enter a message to predict.")
     else:
