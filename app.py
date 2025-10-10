@@ -76,22 +76,18 @@ def styled_box(message, color, icon):
     """
 
 # ------------------------
-# Input text with session state
+# Input text (سيب النص زي ما هو بعد الضغط على Predict)
 # ------------------------
-if "user_input" not in st.session_state:
-    st.session_state.user_input = ""
+user_input = st.text_area("✍ Enter your message here:")
 
-user_input = st.text_area(
-    "✍ Enter your message here:", 
-    value=st.session_state.user_input, 
-    key="input_area"
-)
-
+# ------------------------
+# Predict button
+# ------------------------
 if st.button("Predict 🚀"):
     if user_input.strip() == "":
         st.warning("⚠ Please enter a message to predict.")
     else:
-        st.session_state.user_input = user_input  # حفظ الجملة في session
+        # Preprocess and predict
         clean_text = preprocess_text(user_input)
         X_vec = tfidf.transform([clean_text]).toarray()
         X_scaled = scaler.transform(X_vec)
@@ -99,7 +95,7 @@ if st.button("Predict 🚀"):
         spam_prob = pred_prob[1] * 100
         notspam_prob = pred_prob[0] * 100
 
-        # Threshold logic
+        # Threshold logic for displaying result
         if spam_prob >= 60:
             st.markdown(styled_box(
                 f"🛑 Prediction: Spam<br>Confidence: {spam_prob:.2f}%",
