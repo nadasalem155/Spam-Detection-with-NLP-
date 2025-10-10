@@ -17,6 +17,7 @@ st.subheader("Enter any message and find out if it's 📨 Spam or 📫 Not Spam!
 # ------------------------
 # Download NLTK data
 # ------------------------
+nltk.download("punkt_tab")
 nltk.download("punkt")
 nltk.download("stopwords")
 nltk.download("wordnet")
