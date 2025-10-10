@@ -76,22 +76,23 @@ def styled_box(message, color, icon):
     """
 
 # ------------------------
-# Session state for text area
+# Session state for input text
 # ------------------------
 if "user_input" not in st.session_state:
     st.session_state.user_input = ""
 
-# ------------------------
-# Input text
-# ------------------------
-user_input = st.text_area("✍ Enter your message here:", value=st.session_state.user_input)
+st.session_state.user_input = st.text_area(
+    "✍ Enter your message here:", value=st.session_state.user_input
+)
 
+# ------------------------
+# Predict button
+# ------------------------
 if st.button("Predict 🚀"):
-    st.session_state.user_input = user_input  # حفظ النص
-    if user_input.strip() == "":
+    if st.session_state.user_input.strip() == "":
         st.warning("⚠ Please enter a message to predict.")
     else:
-        clean_text = preprocess_text(user_input)
+        clean_text = preprocess_text(st.session_state.user_input)
         X_vec = tfidf.transform([clean_text]).toarray()
         X_scaled = scaler.transform(X_vec)
         pred_prob = mlp_model.predict_proba(X_scaled)[0]
