@@ -178,15 +178,15 @@ streamlit run spam_detection_app.py
 ### **13. Project Structure 📂**
 
 ├── project
-│   ├── project.ipynb               # Full preprocessing, training, and evaluation
-│   ├── spam.csv                    # Dataset 
-├── app.py                          # Streamlit deployment
-├── mlp_model.pkl                   # Saved trained MLP model
-├── tfidf.pkl                       # Saved TF-IDF vectorizer
-├── scaler.pkl                      # Saved StandardScaler
-├── requirements.txt                # Python dependencies
-├── README.md                       # Project documentation
-├── word-cloud.png                  # WordCloud visualization
+│ ├── project.ipynb # Full preprocessing, training, and evaluation
+│ ├── spam.csv # Dataset
+├── app.py # Streamlit deployment
+├── mlp_model.pkl # Saved trained MLP model
+├── tfidf.pkl # Saved TF-IDF vectorizer
+├── scaler.pkl # Saved StandardScaler
+├── requirements.txt # Python dependencies
+├── README.md # Project documentation
+├── word-cloud.png # WordCloud visualization
 
 ---
 
