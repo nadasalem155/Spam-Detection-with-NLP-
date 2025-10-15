@@ -1,4 +1,5 @@
 # spam_detection_app.py
+
 import streamlit as st
 import joblib
 import re
@@ -28,7 +29,7 @@ nltk.download("omw-1.4")
 # ------------------------
 mlp_model = joblib.load("mlp_model.pkl")
 scaler = joblib.load("scaler.pkl")
-tfidf = joblib.load("tfidf.pkl")
+tfidf = joblib.load("tfidf.pkl")  
 
 # ------------------------
 # Initialize preprocessing tools
@@ -37,7 +38,7 @@ stop_words = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
 
 # ------------------------
-# Preprocessing function
+# Preprocessing function 
 # ------------------------
 def preprocess_text(text):
     text = text.lower()
@@ -69,25 +70,30 @@ def styled_box(message, color, icon):
     """
 
 # ------------------------
-# ULTRA FIXED Input - NO SESSION STATE NEEDED! ✅
+# Session state for user input
 # ------------------------
-st.text_area("✍ Enter your message here:", key="user_input", height=120)
+if "user_input" not in st.session_state:
+    st.session_state.user_input = ""
+
+# ------------------------
+# Input text area
+# ------------------------
+st.text_area("✍ Enter your message here:", value=st.session_state.user_input, key="user_input")
 
 # ------------------------
 # Prediction button
 # ------------------------
 if st.button("Predict 🚀"):
-    user_input = st.session_state.user_input  
-    if user_input.strip() == "":
+    if st.session_state.user_input.strip() == "":
         st.warning("⚠ Please enter a message to predict.")
     else:
-        clean_text = preprocess_text(user_input)
+        clean_text = preprocess_text(st.session_state.user_input)
         X_vec = tfidf.transform([clean_text]).toarray()
         X_scaled = scaler.transform(X_vec)
         pred_prob = mlp_model.predict_proba(X_scaled)[0]
         spam_prob = pred_prob[1] * 100
         notspam_prob = pred_prob[0] * 100
-        
+
         if spam_prob >= 60:
             st.markdown(styled_box(
                 f"🛑 Prediction: Spam<br>Confidence: {spam_prob:.2f}%",
