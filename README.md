@@ -49,6 +49,9 @@ Generated a WordCloud to visualize the most frequent words in the dataset.
 
 This highlighted common spam-related words like “free”, “win”, “call”, etc.
 
+<img width="790" height="405" alt="image" src="https://github.com/user-attachments/assets/d4fa31cb-4581-401a-bd63-aed71f47e95a" />
+
+
 ---
 
 ## **5. Feature Extraction 📊**
@@ -105,14 +108,13 @@ Trained multiple models and compared performance:
 The **MLP Classifier** achieved the highest accuracy (98.9%) with strong generalization on unseen data.
 
 **MLP Classifier Report:**
-markdown
-Copy code
+code
           precision    recall  f1-score   support
        0       1.00      0.98      0.99       904
        1       0.98      1.00      0.99       903
 accuracy                           0.99      1807
-yaml
-Copy code
+
+ code
 
 - Model saved as: `mlp_model.pkl`  
 - TF-IDF vectorizer saved as: `tfidf.pkl`  
@@ -175,22 +177,8 @@ streamlit run spam_detection_app.py
 
 ---
 
-### **13. Project Structure 📂**
 
-File / Folder	          Description
-project/project.ipynb	Full preprocessing, training, and evaluation
-project/spam.csv	          Dataset
-app.py	                    Streamlit deployment
-mlp_model.pkl	          Saved trained MLP model
-tfidf.pkl             	Saved TF-IDF vectorizer
-scaler.pkl	          Saved StandardScaler
-requirements.txt	          Python dependencies
-README.md	                    Project documentation
-word-cloud.png	          WordCloud visualization
----
-
-
-### **14. Technologies Used 🧰**
+### **13. Technologies Used 🧰**
 
 Python
 
@@ -207,7 +195,7 @@ Joblib (for model serialization)
 ---
 
 
-### **15. Results Summary 🏁**
+### **14. Results Summary 🏁**
 Best model: MLP Classifier (Neural Network)
 
 Accuracy: 98.9%
