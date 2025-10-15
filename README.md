@@ -178,7 +178,7 @@ streamlit run spam_detection_app.py
 ---
 
 
-### **13. Technologies Used 🧰**
+## **13. Technologies Used 🧰**
 
 Python
 
@@ -195,7 +195,7 @@ Joblib (for model serialization)
 ---
 
 
-### **14. Results Summary 🏁**
+## **14. Results Summary 🏁**
 Best model: MLP Classifier (Neural Network)
 
 Accuracy: 98.9%
