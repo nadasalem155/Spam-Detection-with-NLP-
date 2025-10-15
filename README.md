@@ -1,7 +1,7 @@
 # 📩 Spam Detector with NLP  
 A complete NLP pipeline that detects spam messages using advanced text preprocessing, TF-IDF feature extraction, and a Neural Network (MLP Classifier). The project includes model training, evaluation, and an interactive Streamlit web app for real-time spam detection.
 
-[🔗 **Live Streamlit App**](https://spam-detector-with-nlp.streamlit.app/)  
+[🔗 **Live Streamlit App**](https://spam-detection-with-nlp.streamlit.app/)  
 
 ---
 
