@@ -69,32 +69,19 @@ def styled_box(message, color, icon):
     """
 
 # ------------------------
-# Session state for user input
+# ULTRA FIXED Input - NO SESSION STATE NEEDED! ✅
 # ------------------------
-if "user_input" not in st.session_state:
-    st.session_state.user_input = ""
-
-# ------------------------
-# Input text area - FIXED VERSION ✅
-# ------------------------
-user_input = st.text_area(
-    "✍ Enter your message here:", 
-    value=st.session_state.user_input, 
-    key="user_input",
-    height=100
-)
-
-# Update session state after input ✅
-st.session_state.user_input = user_input
+st.text_area("✍ Enter your message here:", key="user_input", height=120)
 
 # ------------------------
 # Prediction button
 # ------------------------
 if st.button("Predict 🚀"):
-    if st.session_state.user_input.strip() == "":
+    user_input = st.session_state.user_input  
+    if user_input.strip() == "":
         st.warning("⚠ Please enter a message to predict.")
     else:
-        clean_text = preprocess_text(st.session_state.user_input)
+        clean_text = preprocess_text(user_input)
         X_vec = tfidf.transform([clean_text]).toarray()
         X_scaled = scaler.transform(X_vec)
         pred_prob = mlp_model.predict_proba(X_scaled)[0]
