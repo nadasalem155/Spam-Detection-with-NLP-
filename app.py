@@ -1,4 +1,5 @@
 # spam_detection_app.py
+
 import streamlit as st
 import joblib
 import re
@@ -28,7 +29,7 @@ nltk.download("omw-1.4")
 # ------------------------
 mlp_model = joblib.load("mlp_model.pkl")
 scaler = joblib.load("scaler.pkl")
-tfidf = joblib.load("tfidf.pkl")
+tfidf = joblib.load("tfidf.pkl")  
 
 # ------------------------
 # Initialize preprocessing tools
@@ -37,7 +38,7 @@ stop_words = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
 
 # ------------------------
-# Preprocessing function
+# Preprocessing function 
 # ------------------------
 def preprocess_text(text):
     text = text.lower()
@@ -75,10 +76,9 @@ if "user_input" not in st.session_state:
     st.session_state.user_input = ""
 
 # ------------------------
-# FIXED Input Box - NEVER DISAPPEARS! ✅
+# Input text area
 # ------------------------
-with st.container():
-    st.text_area("✍ Enter your message here:", value=st.session_state.user_input, key="user_input", height=120)
+st.text_area("✍ Enter your message here:", value=st.session_state.user_input, key="user_input")
 
 # ------------------------
 # Prediction button
@@ -93,7 +93,7 @@ if st.button("Predict 🚀"):
         pred_prob = mlp_model.predict_proba(X_scaled)[0]
         spam_prob = pred_prob[1] * 100
         notspam_prob = pred_prob[0] * 100
-        
+
         if spam_prob >= 60:
             st.markdown(styled_box(
                 f"🛑 Prediction: Spam<br>Confidence: {spam_prob:.2f}%",
